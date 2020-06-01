@@ -15,13 +15,14 @@ app.get('/r9s', async (req, res, next) => {
 
     try {
         const r9s = await db.R9.find()
+        const filteredR9s = r9s.filter(r => r.approved === true)
+        res.status(200).json(filteredR9s)
 
     } catch (err) {
         console.log(err)
-    }
 
-    const filteredR9s = r9s.filter(r => r.approved === true)
-    res.status(200).json(filteredR9s)
+        res.status(500).json({ message: err })
+    }
 })
 
 app.get('/r9s/:id', async (req, res, next) => {
