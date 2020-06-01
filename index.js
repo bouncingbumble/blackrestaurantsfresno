@@ -10,8 +10,15 @@ app.use(cors())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.get('/r9s', async (req, res, next) => {
-    const r9s = await db.R9.find()
+
+    try {
+        const r9s = await db.R9.find()
+
+    } catch (err) {
+        console.log(err)
+    }
 
     const filteredR9s = r9s.filter(r => r.approved === true)
     res.status(200).json(filteredR9s)
