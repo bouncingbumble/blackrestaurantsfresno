@@ -5,4 +5,4 @@ mongoose.connect(`mongodb+srv://admin:${process.env.MONGO_PW}@cluster0-bm1ri.mon
 mongoose.Promise = Promise;
 
 module.exports.R9 = require('./r9');
-
+module.exports.VisitorCount = require('./visitors');
